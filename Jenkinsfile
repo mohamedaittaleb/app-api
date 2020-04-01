@@ -15,7 +15,7 @@ pipeline {
         }
         
         stage('SonarQube analysis') { 
-            agent { master }
+            { agent { label 'master' }
             steps {
         withSonarQubeEnv('Sonarqube-docker') { 
           sh 'mvn sonar:sonar'
