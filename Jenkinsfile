@@ -16,5 +16,7 @@ pipeline {
         stage('SonarQube analysis') { 
         withSonarQubeEnv('Sonarqube-docker') { 
           sh 'mvn sonar:sonar'
+        }
+        }
     }
 }
