@@ -12,5 +12,16 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
+        
+        stage('SonarQube analysis') { 
+            agent { label 'master' }
+            steps {
+        
+                sh 'mvn sonar:sonar'
+        
+            }
+        }
+        
+        
     }
 }
