@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent { label 'master' }
     stages {
@@ -21,6 +23,71 @@ pipeline {
         
             }
         }
+
+        stage('Func Tests') { 
+            agent { label 'master' }
+            steps {
+        
+                echo 'Executing Cucmber functional Tests'
+        
+            }
+        }
+
+        stage('Depencency Check') { 
+            agent { label 'master' }
+            steps {
+        
+                echo 'Security Tests DepencencyCheck'
+        
+            }
+        }
+
+        stage('Build Docker Image') { 
+            agent { label 'master' }
+            steps {
+        
+                echo 'Build Docker Image'
+             //   sh "docker build -t myimage ."
+        
+            }
+        }
+
+        stage('Push Artifacts into Nexus Repository') { 
+            agent { label 'master' }
+            steps {
+        
+                echo 'Push Artifacts into Nexus Repository'
+        
+            }
+        }
+
+        stage('Push Docker Images into Docker Rgistry') { 
+            agent { label 'master' }
+            steps {
+        
+                echo 'Push Docker Images into Docker Rgistry'
+        
+            }
+        }
+
+
+        stage('DEPLOY') { 
+            agent { label 'master' }
+            steps {
+        
+                echo 'deploy using Ansible'
+        
+            }
+        }  
+
+        stage('DEPLOY de Docker') { 
+            agent { label 'master' }
+            steps {
+        
+                echo 'deploy using Docker'
+        
+            }
+        }        
         
         
     }
